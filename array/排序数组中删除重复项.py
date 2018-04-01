@@ -7,12 +7,28 @@ class Solution():
         :param nums: List[int]
         :return:int
         """
-        for i in range(len(nums)):
-            for j in range(1,len(nums)):
-                if nums[i] == nums[j]:
-                    del nums[i]
+        result = 1
+        length = len(nums)
+        if length == 0:
+            return 0
+        if length == 1:
+            return 1
+        for i in range(1,length):
+            if nums[i - 1] == nums[i]:
+                continue
+            else:
+                nums[result] = nums[i]
+                result += 1
+        return result
 
 solution = Solution()
-nums = [1,1,2]
-solution.removeDuplicates(nums)
+nums = [1,1,1,2,2,3,4,5,5,6]
+
+result = solution.removeDuplicates(nums)
+print(result)
+print(len(nums))
+for i in range(len(nums) - result):
+    print(nums.pop())
 print(nums)
+
+
